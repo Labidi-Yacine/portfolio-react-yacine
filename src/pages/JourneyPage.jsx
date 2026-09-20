@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import PageHero from '../components/PageHero';
-import { certifications, journey, projects, skills } from '../data/portfolioData';
+import { Link } from "react-router-dom";
+import PageHero from "../components/PageHero";
+import { certifications, journey, projects, skills } from "../data/portfolioData";
 
 function findItems(slugs, collection) {
   return slugs.map((slug) => collection.find((item) => item.slug === slug)).filter(Boolean);
@@ -9,11 +9,7 @@ function findItems(slugs, collection) {
 export default function JourneyPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Frise antéchronologique"
-        title="Mon parcours"
-        intro="Les expériences les plus récentes apparaissent en premier. Chaque étape offre un premier niveau de lecture, puis un détail des missions, de la pédagogie et des liens associés."
-      />
+      <PageHero eyebrow="Frise antéchronologique" title="Mon parcours" intro="Les expériences les plus récentes apparaissent en premier. Chaque étape offre un premier niveau de lecture, puis un détail des missions, de la pédagogie et des liens associés." />
 
       <section className="section">
         <div className="container narrow">
@@ -28,28 +24,20 @@ export default function JourneyPage() {
                   <div className="timeline-card">
                     <div className="timeline-topline">
                       <p className="card-meta">{entry.period}</p>
-                      <a
-                        className="institution-logo"
-                        href={entry.website}
-                        target={entry.website === '#' ? undefined : '_blank'}
-                        rel={entry.website === '#' ? undefined : 'noreferrer'}
-                        aria-label={`Site de ${entry.place}`}
-                      >
+                      <a className="institution-logo" href={entry.website} target={entry.website === "#" ? undefined : "_blank"} rel={entry.website === "#" ? undefined : "noreferrer"} aria-label={`Site de ${entry.place}`}>
                         <img src={entry.logo} alt={`Logo ${entry.place}`} />
                       </a>
                     </div>
 
-                    <p className="eyebrow">
-                      {entry.type === 'experience' ? 'Expérience en entreprise' : 'Formation'}
-                    </p>
+                    <p className="eyebrow">{entry.type === "experience" ? "Expérience en entreprise" : "Formation"}</p>
                     <h2>{entry.title}</h2>
                     <p className="timeline-place">{entry.place}</p>
                     <p>{entry.summary}</p>
 
                     <details>
-                      <summary>Afficher le second niveau de lecture</summary>
+                      <summary>Lire la suite</summary>
                       <div className="details-content">
-                        {entry.type === 'experience' ? (
+                        {entry.type === "experience" ? (
                           <>
                             <h3>Responsabilité et statut</h3>
                             <p>
@@ -116,6 +104,10 @@ export default function JourneyPage() {
                 <p className="card-meta">{certification.date}</p>
                 <h3>{certification.title}</h3>
                 <p>{certification.note}</p>
+                <p>{certification.score}</p>
+                <a href={certification.link} target="_blank" rel="noreferrer" className="text-link">
+                  Voir le certificat <span aria-hidden="true">→</span>
+                </a>
               </article>
             ))}
           </div>
